@@ -1,0 +1,118 @@
+@import '../../css-config/mixins.scss';
+
+.main-header{
+    width: 100%;
+    padding: 0 20px;
+    background-color: #212121;
+    color: white;
+    border-bottom: 1px solid rgb(0, 0, 0,0.1);
+    z-index: 99;
+    
+    @include md {
+        padding: 0 40px;
+    }
+    .header-content{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 50px;
+        max-width: 1200px;
+        margin: 0 auto;
+
+        @include md {
+            height: 80px;
+        }
+
+        .left{
+            font-size: 22px;
+            font-weight: 700px;
+            cursor: pointer;
+
+            @include md {
+                font-size: 34px;
+            }
+        }
+        .center{
+            display: none;
+            gap: 25px;
+            list-style: none;
+            
+            @include md {
+                display: flex;
+            }
+            li{
+                font-size: 14px;
+                font-weight: 600px;
+                text-transform: uppercase;
+                cursor: pointer;
+                position: relative;
+                &:hover>ul{
+                    display: block;
+                }
+                ul{
+                    width: 150px;
+                    display: none;
+                    position: absolute;
+                    list-style: none;
+                    z-index: 10;
+                    background-color: #212121;
+
+                    li{
+                        margin: 10px 0;
+                    }
+                }
+            }
+        }
+        .right{
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
+            @include md {
+                gap: 25px;
+            }
+
+            svg{
+                font-size: 20px;
+                cursor: pointer;
+
+                @include md {
+                    font-size: 24px;
+                }
+            }
+
+            .cart-icon{
+                position: relative;
+                color: rgb(255, 255, 255);
+
+                span{
+                    min-width: 18px;
+                    text-align: center;
+                    background-color: rgb(154, 209, 105);
+                    padding: 2.5px;
+                    position: absolute;
+                    top: -5px;
+                    right: -10px;
+                    font-size: 12px;
+                    line-height: 1;
+                    border-radius: 10px;
+                }
+            }
+        }
+    }
+    &.sticky-header{
+        position: sticky;
+        top: 0;
+        transform: translateY(-80px);
+        animation: stickyHeader 0.3s ease forwards;
+    }
+    @keyframes stickyHeader {
+        0%{
+            transform: translateY(-80px);
+        }
+        100%{
+            transform: translateY(0);
+        }
+    }
+
+}
